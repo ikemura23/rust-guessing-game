@@ -11,3 +11,7 @@ https://doc.rust-jp.rs/book-ja/ch02-00-guessing-game-tutorial.html
 そして、プレーヤーに予想（した数字）を入力するように促します。   
 予想が入力されると、プログラムはその予想が小さすぎるか大きすぎるかを表示します。  
 予想が当たっているなら、お祝いのメッセージを表示し、ゲームを終了します。  
+
+## 標準ライブラリ
+
+https://doc.rust-lang.org/std/
