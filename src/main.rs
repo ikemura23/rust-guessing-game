@@ -1,7 +1,6 @@
-// ユーザ入力を受け付け、結果を出力するライブラリ
 use std::io;
-// 乱数生成
 use rand::Rng;
+use std::cmp::Ordering;
 
 fn main() {
     println!("数を当ててごらん");
@@ -18,6 +17,15 @@ fn main() {
     io::stdin()
         .read_line(&mut guess)
         .expect("Failed to read line");
+    // シャドーイング
+    let guess: u32 = guess.trim().parse()
+        .expect("数値を入力してください！");
 
     println!("次のように予想しました: {}", guess);
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("小さすぎ！"),
+        Ordering::Greater => println!("大きすぎ！"),
+        Ordering::Equal => println!("同じだ、やったね！"),
+    }
 }
