@@ -10,22 +10,24 @@ fn main() {
     let secret_number = rand::thread_rng().gen_range(1..101);
 
     println!("秘密の数値は次の通り: {}", secret_number);
-    println!("ほら、予想を入力してね");
+    loop {
+        println!("ほら、予想を入力してね");
 
-    let mut guess = String::new();
+        let mut guess = String::new();
 
-    io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");
-    // シャドーイング
-    let guess: u32 = guess.trim().parse()
-        .expect("数値を入力してください！");
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+        // シャドーイング
+        let guess: u32 = guess.trim().parse()
+            .expect("数値を入力してください！");
 
-    println!("次のように予想しました: {}", guess);
+        println!("次のように予想しました: {}", guess);
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("小さすぎ！"),
-        Ordering::Greater => println!("大きすぎ！"),
-        Ordering::Equal => println!("同じだ、やったね！"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("小さすぎ！"),
+            Ordering::Greater => println!("大きすぎ！"),
+            Ordering::Equal => println!("同じだ、やったね！"),
+        }
     }
 }
