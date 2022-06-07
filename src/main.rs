@@ -27,7 +27,10 @@ fn main() {
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("小さすぎ！"),
             Ordering::Greater => println!("大きすぎ！"),
-            Ordering::Equal => println!("同じだ、やったね！"),
+            Ordering::Equal => {
+                println!("同じだ、やったね！");
+                break;
+            }
         }
     }
 }
