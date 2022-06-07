@@ -9,7 +9,7 @@ fn main() {
     // 同等で 1..=100 という範囲も渡せる
     let secret_number = rand::thread_rng().gen_range(1..101);
 
-    println!("秘密の数値は次の通り: {}", secret_number);
+    // println!("秘密の数値は次の通り: {}", secret_number);
     loop {
         println!("ほら、予想を入力してね");
 
@@ -19,8 +19,11 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line");
         // シャドーイング
-        let guess: u32 = guess.trim().parse()
-            .expect("数値を入力してください！");
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+
 
         println!("次のように予想しました: {}", guess);
 
